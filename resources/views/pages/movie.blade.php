@@ -108,7 +108,7 @@
                                 @if($movie->tags!=NULL)
                                     @php
                                         $tags = array();
-                                        $tags = explode(',', $movie->$tags);
+                                        $tags = explode(',', $movie->tags);
                                     @endphp
                                     @foreach($tags as $key => $tag)
                                         <a href="{{url('tag/'.$tag)}}">
