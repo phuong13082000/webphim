@@ -24,6 +24,10 @@
                             {!! Form::text('title', isset($movie) ? $movie->title : '', ['class'=>'form-control','placeholder'=>'...','id'=>'slug','onkeyup'=>'ChangeToSlug()']) !!}
                         </div>
                         <div class="form-group">
+                            {!! Form::label('thoiluong', 'Thời lượng phim', []) !!}
+                            {!! Form::text('thoiluong', isset($movie) ? $movie->thoiluong : '', ['class'=>'form-control','placeholder'=>'...','id'=>'slug']) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('tên tiếng anh', 'Tên tiếng anh', []) !!}
                             {!! Form::text('name_eng', isset($movie) ? $movie->name_eng : '', ['class'=>'form-control','placeholder'=>'...']) !!}
                         </div>
@@ -35,6 +39,10 @@
                             {!! Form::label('description', 'Mô tả phim', []) !!}
                             {!! Form::textarea('description', isset($movie) ? $movie->description : '', ['style'=>'resize:none', 'class'=>'form-control','placeholder'=>'...','id'=>'description']) !!}
                         </div>
+                            <div class="form-group">
+                                {!! Form::label('tags', 'Tags phim', []) !!}
+                                {!! Form::textarea('tags', isset($movie) ? $movie->tags : '', ['style'=>'resize:none', 'class'=>'form-control','placeholder'=>'...']) !!}
+                            </div>
                         <div class="form-group">
                             {!! Form::label('resolution', 'Định dạng', []) !!}
                             {!! Form::select('resolution', ['0'=>'HD','1'=>'SD','2'=>'HDCam','3'=>'Cam','4'=>'FullHD'], isset($movie) ? $movie->resolution : '', ['class'=>'form-control']) !!}
@@ -43,10 +51,10 @@
                             {!! Form::label('phude', 'Phụ đề', []) !!}
                             {!! Form::select('phude', ['0'=>'Phụ đề','1'=>'Thuyết minh'], isset($movie) ? $movie->phude : '', ['class'=>'form-control']) !!}
                         </div>
-                            <div class="form-group">
-                                {!! Form::label('status', 'Trạng thái', []) !!}
-                                {!! Form::select('status', ['1'=>'Hiển thị','0'=>'Không hiển thị'], isset($movie) ? $movie->status : '', ['class'=>'form-control']) !!}
-                            </div>
+                        <div class="form-group">
+                            {!! Form::label('status', 'Trạng thái', []) !!}
+                            {!! Form::select('status', ['1'=>'Hiển thị','0'=>'Không hiển thị'], isset($movie) ? $movie->status : '', ['class'=>'form-control']) !!}
+                        </div>
                         <div class="form-group">
                             {!! Form::label('Category', 'Danh mục', []) !!}
                             {!! Form::select('category_id', $category, isset($movie) ? $movie->category_id : '', ['class'=>'form-control']) !!}

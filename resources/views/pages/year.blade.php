@@ -6,7 +6,18 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="yoast_breadcrumb hidden-xs">
-                            <span><span><a href="">Phim thuộc năm</a> » <span class="breadcrumb_last" aria-current="page">{{$year}}</span></span></span>
+                            <span>
+                                <span>
+                                    <a href="">Phim thuộc năm</a> »
+                                    @for($year_bread=2000;$year_bread<=2022;$year_bread++)
+                                        <span class="breadcrumb_last" aria-current="page">
+                                        <a title="{{$year_bread}}" href="{{url('nam/'.$year_bread)}}">
+                                            {{$year_bread}}
+                                        </a>
+                                    </span>
+                                    @endfor
+                                </span>
+                            </span>
                         </div>
                     </div>
                 </div>

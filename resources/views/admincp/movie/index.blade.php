@@ -10,7 +10,9 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Tên phim</th>
-                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Tags</th>
+                        <th scope="col">Thời lượng</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Phim hot</th>
                         <th scope="col">Định dạng</th>
                         <th scope="col">Phụ đề</th>
@@ -31,7 +33,11 @@
                         <tr>
                             <th scope="row">{{$key}}</th>
                             <td>{{$cate->title}}</td>
-                            <td><img width="100" src="{{asset('uploads/movie/'.$cate->image)}}"></td>
+                            <td>{{$cate->tags}}</td>
+                            <td>{{$cate->thoiluong}}</td>
+                            <td>
+                                <img width="100" src="{{asset('uploads/movie/'.$cate->image)}}">
+                            </td>
                             <td>
                                 @if($cate->phim_hot==0)
                                     Không
