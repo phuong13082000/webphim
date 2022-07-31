@@ -24,32 +24,32 @@
     <meta property="og:image" content=""/>
     <meta property="og:image:width" content="300"/>
     <meta property="og:image:height" content="55"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
     <link rel='dns-prefetch' href='//s.w.org'/>
 
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
     <link rel='stylesheet' id='bootstrap-css' href='{{asset('css/bootstrap.min.css')}}' media='all'/>
     <link rel='stylesheet' id='style-css' href='{{asset('css/style.css')}}' media='all'/>
     <link rel='stylesheet' id='wp-block-library-css' href='{{asset('css/style.min.css')}}' media='all'/>
-    <script type='text/javascript' src='{{asset('js/jquery.min.js?ver=5.7.2')}}' id='halim-jquery-js'></script>
+
     <style type="text/css" id="wp-custom-css">
         .textwidget p a img {
             width: 100%;
         }
     </style>
-    <style>#header .site-title {
+    <style>
+        #header .site-title {
             background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) no-repeat top left;
             background-size: contain;
             text-indent: -9999px;
-        }</style>
+        }
+    </style>
 </head>
 <body class="home blog halimthemes halimmovies" data-masonry="">
 <header id="header">
     <div class="container">
         <div class="row" id="headwrap">
             <div class="col-md-3 col-sm-6 slogan">
-                <p class="site-title"><a class="logo" href="" title="phim hay ">Phim Hay</p>
-                </a>
+                <p class="site-title"><a class="logo" href="" title="phim hay ">Phim Hay</a></p>
             </div>
             <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
                 <div class="header-nav">
@@ -190,12 +190,32 @@
     </div>
 </footer>
 <div id='easy-top'></div>
+<script type='text/javascript' src='{{asset('js/jquery.min.js')}}' id='halim-jquery-js'></script>
 
-<script type='text/javascript' src='{{asset('js/bootstrap.min.js?ver=5.7.2')}}' id='bootstrap-js'></script>
-<script type='text/javascript' src='{{asset('js/owl.carousel.min.js?ver=5.7.2')}}' id='carousel-js'></script>
+<script type='text/javascript' src='{{asset('js/bootstrap.min.js')}}' id='bootstrap-js'></script>
+<script type='text/javascript' src='{{asset('js/owl.carousel.min.js')}}' id='carousel-js'></script>
+<script type='text/javascript' src='{{asset('js/halimtheme-core.min.js')}}' id='halim-init-js'></script>
 
-<script type='text/javascript' src='{{asset('js/halimtheme-core.min.js?ver=1626273138')}}' id='halim-init-js'></script>
-
+<script type="text/javascript">
+    $('.filter-sidebar').click(function () {
+        var href = $(this).attr('href');
+        if (href == '#ngay') {
+            var value = 0;
+        } else if (href == '#thang') {
+            var value = 1;
+        } else {
+            var value = 2;
+        }
+        $.ajax({
+            url: "{{url('/filter-topview-phim')}}",
+            method: "GET",
+            data: {value: value},
+            success: function (data) {
+                $('#show' + value).html(data);
+            }
+        });
+    })
+</script>
 
 <style>
     #overlay_mb {

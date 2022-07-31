@@ -32,3 +32,5 @@ Route::resource('movie', MovieController::class);
 
 Route::post('resorting', [CategoryController::class, 'resorting'])->name('resorting');
 Route::get('/update-year-phim', [MovieController::class, 'update_year']);
+Route::get('/update-topview-phim', [MovieController::class, 'update_topview']);
+Route::get('/filter-topview-phim', [MovieController::class, 'filter_topview']);
