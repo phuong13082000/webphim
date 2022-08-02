@@ -159,11 +159,11 @@
     $('.select-year').change(function () {
         var year = $(this).find(':selected').val();
         var id_phim = $(this).attr('id');
-
+        var _token = $('input[name="_token"]').val();
         $.ajax({
             url: "{{url('/update-year-phim')}}",
-            method: "GET",
-            data: {year: year, id_phim: id_phim},
+            method: "POST",
+            data: {year: year, id_phim: id_phim, _token:_token},
             success: function () {
                 alert('Change year ' + year + ' success!');
             }
@@ -174,6 +174,7 @@
     $('.select-topview').change(function () {
         var topview = $(this).find(':selected').val();
         var id_phim = $(this).attr('id');
+        var _token = $('input[name="_token"]').val();
         if (topview == 0) {
             var text = 'Ngày';
         } else if (topview == 1) {
@@ -183,10 +184,26 @@
         }
         $.ajax({
             url: "{{url('/update-topview-phim')}}",
-            method: "GET",
-            data: {topview: topview, id_phim: id_phim},
+            method: "POST",
+            data: {topview: topview, id_phim: id_phim, _token: _token},
             success: function () {
                 alert('Change topview ' + text + ' success!');
+            }
+        });
+    })
+</script>
+<script type="text/javascript">
+    $('.select-season').change(function () {
+        var season = $(this).find(':selected').val();
+        var id_phim = $(this).attr('id');
+        var _token = $('input[name="_token"]').val();
+
+        $.ajax({
+            url: "{{url('/update-season-phim')}}",
+            method: "POST",
+            data: {season: season, id_phim: id_phim, _token: _token},
+            success: function () {
+                alert('Change season ' + season + ' success!');
             }
         });
     })

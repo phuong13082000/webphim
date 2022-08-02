@@ -151,7 +151,7 @@ class MovieController extends Controller
                 $text = 'Cam';
             }
             $output .= '<div class="item">
-                            <a href="' . url('phim /'. $mov->slug) . '" title="' . $mov->title . '">
+                            <a href="' . url('phim/'. $mov->slug) . '" title="' . $mov->title . '">
                                 <div class="item-link">
                                     <img src="' . url('uploads/movie/' . $mov->image) . '" class="lazy post-thumb" alt="' . $mov->title . '" title="' . $mov->title . '">
                                     <span class="is_trailer">' . $text . '</span>
@@ -166,5 +166,13 @@ class MovieController extends Controller
                         </div>';
         }
         echo $output;
+    }
+
+    public function update_season(Request $request)
+    {
+        $data = $request->all();
+        $movie = Movie::find($data['id_phim']);
+        $movie->season = $data['season'];
+        $movie->save();
     }
 }

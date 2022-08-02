@@ -65,6 +65,9 @@
                                         </span></li>
 
                                     <li class="list-info-group-item">
+                                        <span>Season</span> : {{$movie->season}}
+                                    </li>
+                                    <li class="list-info-group-item">
                                         <span>Thời lượng</span> : {{$movie->thoiluong}}
                                     </li>
                                     <li class="list-info-group-item">
@@ -152,8 +155,14 @@
                                         <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                                         @if($hot->phude==0)
                                                 Phụ đề
+                                                @if($hot->season!=0)
+                                                    - Season {{$hot->season}}
+                                                @endif
                                             @else
                                                 Thuyết minh
+                                                @if($hot->season!=0)
+                                                    - Season {{$hot->season}}
+                                                @endif
                                             @endif</span>
                                         <div class="icon_overlay"></div>
                                         <div class="halim-post-title-box">

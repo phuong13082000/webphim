@@ -26,6 +26,7 @@
                         <th scope="col">Ngày cập nhật</th>
                         <th scope="col">Năm phim</th>
                         <th scope="col">Top views</th>
+                        <th scope="col">Season</th>
                         <th scope="col">Quản lý</th>
                     </tr>
                     </thead>
@@ -37,7 +38,7 @@
                             <td>{{$cate->tags}}</td>
                             <td>{{$cate->thoiluong}}</td>
                             <td>
-                                <img width="100" src="{{asset('uploads/movie/'.$cate->image)}}">
+                                <img width="100" src="{{asset('uploads/movie/'.$cate->image)}}" alt="{{$cate->title}}">
                             </td>
                             <td>
                                 @if($cate->phim_hot==0)
@@ -81,10 +82,25 @@
                             <td>{{$cate->ngaytao}}</td>
                             <td>{{$cate->ngaycapnhat}}</td>
                             <td>
-                                {!! Form::selectYear('year', 2000, 2022, isset($cate->year) ? $cate->year : '',['class'=>'select-year','id'=>$cate->id]) !!}
+                                <form method="POST">
+                                    @csrf
+                                    {!! Form::selectYear('year', 2000, 2022, isset($cate->year) ? $cate->year : '',['class'=>'select-year','id'=>$cate->id]) !!}
+                                </form>
                             </td>
+
                             <td>
-                                {!! Form::select('topview', ['0'=>'Ngày','1'=>'Tháng','2'=>'Năm'], isset($cate->topview) ? $cate->topview : '', ['class'=>'select-topview','id'=>$cate->id]) !!}
+                                <form method="POST">
+                                    @csrf
+                                    {!! Form::select('topview', ['0'=>'Ngày','1'=>'Tháng','2'=>'Năm'], isset($cate->topview) ? $cate->topview : '', ['class'=>'select-topview','id'=>$cate->id]) !!}
+                                </form>
+                            </td>
+
+                            <td>
+                                <form method="POST">
+                                    @csrf
+                                    {!! Form::selectRange('season', 0, 20, isset($cate->season) ? $cate->season : '',['class'=>'select-season','id'=>$cate->id]) !!}
+                                </form>
+
                             </td>
                             <td>
                                 {!! Form::open(['method'=>'DELETE','route'=>['movie.destroy',$cate->id],'onsubmit'=>'return confirm("Bạn có chắc muốn xóa?")']) !!}
