@@ -16,6 +16,7 @@
                         <th scope="col">Phim hot</th>
                         <th scope="col">Định dạng</th>
                         <th scope="col">Phụ đề</th>
+                        <th scope="col">Trailer</th>
                         <!-- <th scope="col">Mô tả</th> -->
                         <th scope="col">Đường dẫn</th>
                         <th scope="col">Trạng thái</th>
@@ -56,8 +57,10 @@
                                     HDCam
                                 @elseif($cate->resolution==3)
                                     Cam
-                                @else
+                                @elseif($cate->resolution==4)
                                     FullHD
+                                @else
+                                    Trailer
                                 @endif
                             </td>
                             <td>
@@ -67,6 +70,7 @@
                                     Thuyết minh
                                 @endif
                             </td>
+                            <td>{{$cate->trailer}}</td>
                             <!-- <td>{{$cate->description}}</td> -->
                             <td>{{$cate->slug}}</td>
                             <td>

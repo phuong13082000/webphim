@@ -52,17 +52,22 @@
                                                 HDCam
                                             @elseif($movie->resolution==3)
                                                 Cam
-                                            @else
+                                            @elseif($movie->resolution==4)
                                                 FullHD
+                                            @else
+                                                Trailer
                                             @endif
                                         </span>
-                                        <span class="episode">
+                                        @if($movie->resolution!=5)
+                                            <span class="episode">
                                             @if($movie->phude==0)
-                                                Phụ đề
-                                            @else
-                                                Thuyết minh
-                                            @endif
-                                        </span></li>
+                                                    Phụ đề
+                                                @else
+                                                    Thuyết minh
+                                                @endif
+                                        </span>
+                                        @endif
+                                    </li>
 
                                     <li class="list-info-group-item">
                                         <span>Season</span> : {{$movie->season}}
@@ -91,6 +96,8 @@
                     <div class="clearfix"></div>
                     <div id="halim_trailer"></div>
                     <div class="clearfix"></div>
+
+                    <!--Noi-dung-phim-->
                     <div class="section-bar clearfix">
                         <h2 class="section-title"><span style="color:#ffed4d">Nội dung phim</span></h2>
                     </div>
@@ -101,7 +108,26 @@
                             </article>
                         </div>
                     </div>
+                    <!--End-noi-dung-phim-->
 
+                    <!--Trailer-->
+                    <div class="section-bar clearfix">
+                        <h2 class="section-title"><span style="color:#ffed4d">Trailer</span></h2>
+                    </div>
+                    <div class="entry-content htmlwrap clearfix">
+                        <div class="video-item halim-entry-box">
+                            <article id="post-38424" class="item-content">
+                                @if(isset($movie->trailer))
+                                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{$movie->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                @else
+
+                                @endif
+                            </article>
+                        </div>
+                    </div>
+                    <!--End-Trailer-->
+
+                    <!--Tag-->
                     <div class="section-bar clearfix">
                         <h2 class="section-title"><span style="color:#ffed4d">Tag</span></h2>
                     </div>
@@ -124,6 +150,8 @@
                             </article>
                         </div>
                     </div>
+                    <!--End-Tag-->
+
                 </div>
             </section>
             <section class="related-movies">
@@ -148,8 +176,10 @@
                                                 HDCam
                                             @elseif($hot->resolution==3)
                                                 Cam
-                                            @else
+                                            @elseif($hot->resolution==4)
                                                 FullHD
+                                            @else
+                                                Trailer
                                             @endif
                                         </span>
                                         <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
