@@ -31,12 +31,14 @@
                         <div class="movie_info col-xs-12">
                             <div class="movie-poster col-md-3">
                                 <img class="movie-thumb" src="{{asset('uploads/movie/'.$movie->image)}}" alt="{{$movie->title}}">
-                                <div class="bwa-content">
-                                    <div class="loader"></div>
-                                    <a href="{{route('watch')}}" class="bwac-btn">
-                                        <i class="fa fa-play"></i>
-                                    </a>
-                                </div>
+                                @if($movie->resolution != 5)
+                                    <div class="bwa-content">
+                                        <div class="loader"></div>
+                                        <a href="{{route('watch')}}" class="bwac-btn">
+                                            <i class="fa fa-play"></i>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                             <div class="film-poster col-md-9">
                                 <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;">{{$movie->title}}</h1>
