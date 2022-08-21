@@ -20,7 +20,7 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $category_home = Category::with('movie')->orderBy('id', 'DESC')->where('status', 1)->get();
-        return view('pages.home', compact('category', 'genre', 'country', 'category_home', 'phimhot','phimhot_sidebar'));
+        return view('pages.home', compact('category', 'genre', 'country', 'category_home', 'phimhot', 'phimhot_sidebar'));
     }
 
     public function category($slug)
@@ -87,6 +87,23 @@ class IndexController extends Controller
 
         $movie = Movie::where('tags', 'LIKE', '%' . $tag . '%')->orderBy('ngaycapnhat', 'DESC')->paginate(40);
         return view('pages.tag', compact('category', 'genre', 'country', 'tag', 'movie', 'phimhot_sidebar'));
+    }
+
+    public function search()
+    {
+        if (isset($_GET['search'])) {
+            $search = $_GET['search'];
+
+            $category = Category::orderBy('position', 'ASC')->where('status', 1)->get();
+            $genre = Genre::orderBy('id', 'DESC')->get();
+            $country = Country::orderBy('id', 'DESC')->get();
+            $phimhot_sidebar = Movie::where('phim_hot', 1)->where('status', 1)->orderBy('ngaycapnhat', 'DESC')->take('10')->get();
+
+            $movie = Movie::where('title', 'LIKE', '%' . $search . '%')->orderBy('ngaycapnhat', 'DESC')->paginate(40);
+            return view('pages.timkiem', compact('category', 'genre', 'country', 'search', 'movie', 'phimhot_sidebar'));
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function watch()

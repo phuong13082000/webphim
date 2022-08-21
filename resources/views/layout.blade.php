@@ -55,15 +55,27 @@
             <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
                 <div class="header-nav">
                     <div class="col-xs-12">
-                        <form id="search-form-pc" name="halimForm" role="search" action="" method="GET">
-                            <div class="form-group">
-                                <div class="input-group col-xs-12">
-                                    <input id="search" type="text" name="s" class="form-control" placeholder="Tìm kiếm..." autocomplete="off" required>
-                                    <i class="animate-spin hl-spin4 hidden"></i>
-                                </div>
+                        <style type="text/css">
+                            ul#result {
+                                position: absolute;
+                                z-index: 9999;
+                                background: #1b2d3c;
+                                width: 94%;
+                                padding: 10px;
+                                margin: 1px;
+                            }
+                        </style>
+                        <div class="form-group form-timkiem">
+                            <div class="input-group col-xs-12">
+                                <form action="{{route('tim-kiem')}}" method="GET">
+                                    <input type="text" name="search" id="timkiem" class="form-control" placeholder="Tìm kiếm..."
+                                           autocomplete="off">
+                                    <button class="btn btn-primary">Tìm kiếm</button>
+                                </form>
                             </div>
-                        </form>
-                        <ul class="ui-autocomplete ajax-results hidden"></ul>
+                        </div>
+                        <ul class="list-group" id="result" style="display: none"></ul>
+
                     </div>
                 </div>
             </div>
@@ -213,6 +225,36 @@
             success: function (data) {
                 $('#show' + value).html(data);
             }
+        });
+    })
+</script>
+
+<!--script search-->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#timkiem').keyup(function () {
+            $('#result').html('');
+            var search = $('#timkiem').val();
+            if (search != '') {
+                $('#result').css('display', 'inherit');
+                var expression = new RegExp(search, "i");
+                $.getJSON('/json_file/movies.json', function (data) {
+                    $.each(data, function (key, value) {
+                        if (value.title.search(expression) != -1) {
+                            $('#result').append('<li style="cursor: pointer" class="list-group-item link-class"><img src="/uploads/movie/' + value.image + '" height="40" width="40" class="" alt="' + value.title + '">' + value.title + '<br> -> <span class="text-muted">' + value.description + '</span></li>')
+                        }
+                    });
+                })
+            } else {
+                $('#result').css('display', 'none');
+            }
+        })
+
+        $('#result').on('click', 'li', function () {
+            var click_text = $(this).text().split('->');
+            $('#timkiem').val($.trim(click_text[0]));
+            $('#result').html('');
         });
     })
 </script>

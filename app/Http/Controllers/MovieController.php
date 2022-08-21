@@ -8,12 +8,21 @@ use App\Models\Movie;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Country;
+use Illuminate\Support\Facades\File;
 
 class MovieController extends Controller
 {
     public function index()
     {
         $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
+
+        //tạo file json để search cho user
+        $destinationPath = public_path() . "/json_file/";
+        if (!is_dir($destinationPath)) {
+            mkdir($destinationPath, 0777, true);
+        }
+        File::put($destinationPath . 'movies.json', json_encode($list));
+
         return view('admincp.movie.index', compact('list'));
     }
 
@@ -157,7 +166,7 @@ class MovieController extends Controller
                 $text = 'Trailer';
             }
             $output .= '<div class="item">
-                            <a href="' . url('phim/'. $mov->slug) . '" title="' . $mov->title . '">
+                            <a href="' . url('phim/' . $mov->slug) . '" title="' . $mov->title . '">
                                 <div class="item-link">
                                     <img src="' . url('uploads/movie/' . $mov->image) . '" class="lazy post-thumb" alt="' . $mov->title . '" title="' . $mov->title . '">
                                     <span class="is_trailer">' . $text . '</span>
