@@ -73,7 +73,6 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $phimhot_sidebar = Movie::where('phim_hot', 1)->where('status', 1)->orderBy('ngaycapnhat', 'DESC')->take('10')->get();
-
         $movie = Movie::where('year', $year)->orderBy('ngaycapnhat', 'DESC')->paginate(40);
         return view('pages.year', compact('category', 'genre', 'country', 'year', 'movie', 'phimhot_sidebar'));
     }
@@ -84,7 +83,6 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $phimhot_sidebar = Movie::where('phim_hot', 1)->where('status', 1)->orderBy('ngaycapnhat', 'DESC')->take('10')->get();
-
         $movie = Movie::where('tags', 'LIKE', '%' . $tag . '%')->orderBy('ngaycapnhat', 'DESC')->paginate(40);
         return view('pages.tag', compact('category', 'genre', 'country', 'tag', 'movie', 'phimhot_sidebar'));
     }

@@ -85,6 +85,7 @@
                             <td>{{$cate->country->title}}</td>
                             <td>{{$cate->ngaytao}}</td>
                             <td>{{$cate->ngaycapnhat}}</td>
+
                             <td>
                                 <form method="POST">
                                     @csrf
@@ -106,12 +107,14 @@
                                 </form>
 
                             </td>
+
                             <td>
                                 {!! Form::open(['method'=>'DELETE','route'=>['movie.destroy',$cate->id],'onsubmit'=>'return confirm("Bạn có chắc muốn xóa?")']) !!}
                                 {!! Form::submit('Xóa', ['class'=>'btn btn-danger']) !!}
                                 {!! Form::close() !!}
                                 <a href="{{route('movie.edit',$cate->id)}}" class="btn btn-warning">Sửa</a>
                             </td>
+                            
                         </tr>
                     @endforeach
                     </tbody>

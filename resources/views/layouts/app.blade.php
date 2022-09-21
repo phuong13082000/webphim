@@ -101,9 +101,7 @@
     });
 
     function ChangeToSlug() {
-
         var slug;
-
         //Lấy text từ thẻ input title
         slug = document.getElementById("slug").value;
         slug = slug.toLowerCase();
@@ -133,6 +131,7 @@
     }
 
 </script>
+
 <script type="text/javascript">
     $('.order_position').sortable({
         placeholder: 'ui-state-highlight',
@@ -155,6 +154,7 @@
         }
     })
 </script>
+
 <script type="text/javascript">
     $('.select-year').change(function () {
         var year = $(this).find(':selected').val();
@@ -170,6 +170,7 @@
         });
     })
 </script>
+
 <script type="text/javascript">
     $('.select-topview').change(function () {
         var topview = $(this).find(':selected').val();
@@ -192,6 +193,7 @@
         });
     })
 </script>
+
 <script type="text/javascript">
     $('.select-season').change(function () {
         var season = $(this).find(':selected').val();

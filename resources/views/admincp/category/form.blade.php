@@ -19,22 +19,27 @@
                         @else
                             {!! Form::open(['route'=>['category.update',$category->id],'method'=>'PUT']) !!}
                         @endif
+
                         <div class="form-group">
                             {!! Form::label('title', 'Tên danh mục', []) !!}
                             {!! Form::text('title', isset($category) ? $category->title : '', ['class'=>'form-control','placeholder'=>'...','id'=>'slug','onkeyup'=>'ChangeToSlug()']) !!}
                         </div>
+
                         <div class="form-group">
                             {!! Form::label('slug', 'Đường dẫn', []) !!}
                             {!! Form::text('slug', isset($category) ? $category->slug : '', ['class'=>'form-control','placeholder'=>'...','id'=>'convert_slug']) !!}
                         </div>
+
                         <div class="form-group">
                             {!! Form::label('description', 'Mô tả danh mục', []) !!}
                             {!! Form::textarea('description', isset($category) ? $category->description : '', ['style'=>'resize:none', 'class'=>'form-control','placeholder'=>'...','id'=>'description']) !!}
                         </div>
+
                         <div class="form-group">
                             {!! Form::label('status', 'Trạng thái', []) !!}
                             {!! Form::select('status', ['1'=>'Hiển thị','0'=>'Không hiển thị'], isset($category) ? $category->status : '', ['class'=>'form-control']) !!}
                         </div>
+                        
                         @if(!isset($category))
                             {!! Form::submit('Thêm Danh Mục', ['class'=>'btn btn-success']) !!}
                         @else

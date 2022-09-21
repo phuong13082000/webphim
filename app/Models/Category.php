@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-	public $timestamps = false;
+    public $timestamps = false;
     use HasFactory;
-    public function movie(){
-
-    	return $this->hasMany(Movie::class)->orderBy('id','DESC');
+    
+    public function movie()
+    {
+        return $this->hasMany(Movie::class)->orderBy('id', 'DESC');
     }
 }
