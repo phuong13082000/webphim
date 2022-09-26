@@ -4,15 +4,14 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{route('movie.create')}}" class="btn btn-primary">Thêm Phim</a>
+                <a href="{{route('movie.create')}}" class="btn btn-primary">Thêm Phim</a><br><br>
                 <table class="table" id="tablephim">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Tên phim</th>
                         <th scope="col">Tags</th>
                         <th scope="col">Thời lượng</th>
-                        <th scope="col">Image</th>
                         <th scope="col">Phim hot</th>
                         <th scope="col">Định dạng</th>
                         <th scope="col">Phụ đề</th>
@@ -34,13 +33,12 @@
                     <tbody>
                     @foreach($list as $key => $cate)
                         <tr>
-                            <th scope="row">{{$key}}</th>
+                            <td>
+                                <img width="100px" src="{{asset('uploads/movie/'.$cate->image)}}" alt="{{$cate->title}}">
+                            </td>
                             <td>{{$cate->title}}</td>
                             <td>{{$cate->tags}}</td>
                             <td>{{$cate->thoiluong}}</td>
-                            <td>
-                                <img width="100" src="{{asset('uploads/movie/'.$cate->image)}}" alt="{{$cate->title}}">
-                            </td>
                             <td>
                                 @if($cate->phim_hot==0)
                                     Không
@@ -50,24 +48,24 @@
                             </td>
                             <td>
                                 @if($cate->resolution==0)
-                                    HD
+                                    <span class="badge bg-danger">HD</span> 
                                 @elseif($cate->resolution==1)
-                                    SD
+                                    <span class="badge bg-danger">SD</span> 
                                 @elseif($cate->resolution==2)
-                                    HDCam
+                                    <span class="badge bg-danger">HDCAM</span> 
                                 @elseif($cate->resolution==3)
-                                    Cam
+                                    <span class="badge bg-danger">CAM</span> 
                                 @elseif($cate->resolution==4)
-                                    FullHD
+                                    <span class="badge bg-danger">FULLHD</span> 
                                 @else
-                                    Trailer
+                                    <span class="badge bg-danger">TRAILER</span> 
                                 @endif
                             </td>
                             <td>
                                 @if($cate->phude==0)
-                                    Phụ đề
+                                    <span class="badge bg-danger">Phụ đề</span> 
                                 @else
-                                    Thuyết minh
+                                    <span class="badge bg-danger">Thuyết minh</span> 
                                 @endif
                             </td>
                             <td>{{$cate->trailer}}</td>
@@ -79,7 +77,9 @@
                                     Không hiển thị
                                 @endif
                             </td>
-                            <td>{{$cate->category->title}}</td>
+                            <td>
+                                <span class="badge bg-primary">{{$cate->category->title}}</span>  
+                            </td>
                             <td>
                                 @foreach ($cate->movie_genre as $gen )
                                     <span class="badge bg-dark">{{$gen->title}}</span>                              
