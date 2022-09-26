@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th8 05, 2022 lúc 05:49 AM
--- Phiên bản máy phục vụ: 5.7.36
--- Phiên bản PHP: 8.1.0
+-- Host: 127.0.0.1:3306
+-- Generation Time: Sep 26, 2022 at 02:04 PM
+-- Server version: 8.0.27
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,28 +18,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `web_phim`
+-- Database: `web_phim`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `position` int(11) NOT NULL,
+  `position` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `title`, `description`, `status`, `slug`, `position`) VALUES
@@ -53,21 +53,21 @@ INSERT INTO `categories` (`id`, `title`, `description`, `status`, `slug`, `posit
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `countries`
+-- Table structure for table `countries`
 --
 
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE IF NOT EXISTS `countries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `slug` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `countries`
+-- Dumping data for table `countries`
 --
 
 INSERT INTO `countries` (`id`, `title`, `description`, `status`, `slug`) VALUES
@@ -84,33 +84,33 @@ INSERT INTO `countries` (`id`, `title`, `description`, `status`, `slug`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `episodes`
+-- Table structure for table `episodes`
 --
 
 DROP TABLE IF EXISTS `episodes`;
 CREATE TABLE IF NOT EXISTS `episodes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `movie_id` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `movie_id` int NOT NULL,
   `linkphim` varchar(255) NOT NULL,
-  `episode` int(11) NOT NULL,
+  `episode` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `movie_id` (`movie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
@@ -119,21 +119,21 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `genres`
+-- Table structure for table `genres`
 --
 
 DROP TABLE IF EXISTS `genres`;
 CREATE TABLE IF NOT EXISTS `genres` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `slug` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `genres`
+-- Dumping data for table `genres`
 --
 
 INSERT INTO `genres` (`id`, `title`, `description`, `status`, `slug`) VALUES
@@ -148,19 +148,19 @@ INSERT INTO `genres` (`id`, `title`, `description`, `status`, `slug`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -172,41 +172,41 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `movies`
+-- Table structure for table `movies`
 --
 
 DROP TABLE IF EXISTS `movies`;
 CREATE TABLE IF NOT EXISTS `movies` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `thoiluong` varchar(50) DEFAULT NULL,
   `description` longtext NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `image` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `genre_id` int(11) NOT NULL,
-  `country_id` int(11) NOT NULL,
-  `phim_hot` int(11) NOT NULL,
-  `resolution` int(11) NOT NULL DEFAULT '0',
+  `category_id` int NOT NULL,
+  `genre_id` int NOT NULL,
+  `country_id` int NOT NULL,
+  `phim_hot` int NOT NULL,
+  `resolution` int NOT NULL DEFAULT '0',
   `name_eng` varchar(255) NOT NULL,
-  `phude` int(11) NOT NULL DEFAULT '0',
+  `phude` int NOT NULL DEFAULT '0',
   `ngaytao` varchar(50) DEFAULT NULL,
   `ngaycapnhat` varchar(50) DEFAULT NULL,
   `year` varchar(20) DEFAULT NULL,
   `tags` text,
-  `topview` int(11) DEFAULT NULL,
-  `season` int(11) NOT NULL DEFAULT '0',
+  `topview` int DEFAULT NULL,
+  `season` int NOT NULL DEFAULT '0',
   `trailer` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`,`genre_id`,`country_id`),
   KEY `category_id_2` (`category_id`,`genre_id`,`country_id`),
   KEY `genre_id` (`genre_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `movies`
+-- Dumping data for table `movies`
 --
 
 INSERT INTO `movies` (`id`, `title`, `thoiluong`, `description`, `status`, `image`, `slug`, `category_id`, `genre_id`, `country_id`, `phim_hot`, `resolution`, `name_eng`, `phude`, `ngaytao`, `ngaycapnhat`, `year`, `tags`, `topview`, `season`, `trailer`) VALUES
@@ -229,19 +229,46 @@ INSERT INTO `movies` (`id`, `title`, `thoiluong`, `description`, `status`, `imag
 (19, 'HUYỀN THOẠI GAME THỦ', '', 'Huyền Thoại Game Thủ, No Game, No Life 2015 Tập 12 / 12 HD Vietsub\r\nHai anh em Sora & Shiro tạo nên huyền thoại game thủ với thành tích quán quân trong tất cả bảng xếp hạng game dưới cái tên Kuhaku hay còn được gọi là Blank. Bước ra khỏi thế giới ảo, họ là những NEET chính hiệu, không việc làm, không ăn học, cách ly và sợ tiếp xúc với bên ngoài, luôn nghĩ mình sinh nhầm thế giới. Một ngày nọ, có 1 tên kì lạ tự cho mình là thần (Tên: Tet, là 1 vị thần tối cao) đã hỏi 1 câu hỏi kì lạ \"2 người muốn vào 1 thế giới chỉ định đoạt bằng game? nếu nó thực sự tồn tại? \" và đưa 2 anh em được đưa tới một thế giới khác - một nơi mà mọi thứ đều được quyết định bởi game, từ các dụng cụ, tiền tệ, quốc gia thậm chí là cả mạng sống đều quyết định qua game. Khi tới đây mục tiêu duy nhất của 2 anh em họ chỉ là: đánh bại 16 tộc -đoạt lấy quân cờ chủng tộc (là thứ cốt lõi của 1 quốc gia nơi đây) để thách đấu với Tet.', 1, 'huyen-thoai-game-thu-60196-thumbnail4006.jpg', 'huyen-thoai-game-thu', 4, 4, 7, 1, 0, 'No Game, No Life', 0, '', '', NULL, NULL, 0, 0, NULL),
 (20, 'One Punch Man', '', 'one punch man c Gia, Superman/Batman: Public Enemies 2009 Tập HD Vietsub Superman/Batman: Public Enemies là bộ phim hoạt hình về Người Dơi và Siêu Nhân. Trong phần này, nói về cuộc chiến của họ khi Lex Luthor được bầu làm Tổng thống Mỹ, ông đ', 1, 'thoi-dai-ma-phap6341.jpg', 'one-punch-man', 4, 6, 5, 1, 0, 'one-punch-man', 0, '', '', NULL, NULL, 2, 0, NULL),
 (22, 'D4DJ: FIRST MIX', '', 'D4DJ: First Mix, D4DJ First Mix, Dig Delight Direct Drive DJ 2020 Tập 11 Anime HD Vietsub\r\nD4DJ: First Mix, D4DJ First Mix, Dig Delight Direct Drive DJ 2020 Anime', 1, 'd4dj-first-mix-61500-thumbnail6547.jpg', 'd4dj-first-mix', 5, 8, 4, 1, 0, 'D4DJ First Mix, Dig Delight Direct Drive DJ (2020)', 0, '', '', NULL, NULL, 1, 0, NULL),
-(23, 'No Game, No Life (2015)', NULL, 'gdhh ghđheh hhhhh fgdhdfhdh fhdhdhd fgdfd dfdfdhs dgdgd dggrgr grdggd rted', 1, 'truyen1990.jpeg', 'no-game-no-life-2015', 9, 4, 3, 1, 5, 'No Game, No Life (2015)', 0, '', '2022-08-03 00:34:14', '2019', NULL, 1, 2, NULL),
-(24, 'MA TRẬN: HỒI SINH', '155 phút', 'Ma Trận: Hồi Sinh, The Matrix Resurrections 2021 HD Vietsub + TM\r\nMa Trận: Hồi Sinh - The Matrix Resurrections 2021 Quay Trở Lại Một Thế Giới Của Hai Thực Tại: Một, Cuộc Sống Hàng Ngày; Khác, Những Gì Nằm Sau Nó. Để Tìm Hiểu Xem Thực Tế Của Anh Ta Có Phải Là Một Công Trình Hay Không, để Thực Sự Hiểu Rõ Bản Thân Mình, Anh Anderson Sẽ Phải Chọn Theo Dõi Con Thỏ Trắng Một Lần Nữa. Ma Trận: Hồi Sinh là phần phim tiếp theo rất được trông đợi của loạt phim “Ma Trận” đình đám, đã góp phần tái định nghĩa thể loại phim khoa học viễn tưởng. Phần phim mới nhất này đón chào sự trở lại của cặp đôi Keanu Reeves và Carrie-Anne Moss với vai diễn biểu tượng đã làm nên tên tuổi của họ, Neo và Trinity. Ngoài ra, phim còn có sự góp mặt của dàn diễn viên đầy tài năng gồm Yahya Abdul-', 1, 'truyen2781.jpeg', 'ma-tran-hoi-sinh', 6, 1, 9, 1, 0, 'The Matrix Resurrections (2021)', 0, '', '2022-08-03 00:09:09', '2017', 'ma tran hoi sinh,Ma tran Hoi sinh,hoi sinh Ma tran,ma sinh Hoi tran', 0, 1, 'd0OhjguDpHc');
+(23, 'No Game, No Life (2015)', NULL, 'gdhh ghđheh hhhhh fgdhdfhdh fhdhdhd fgdfd dfdfdhs dgdgd dggrgr grdggd rted', 1, 'truyen1990.jpeg', 'no-game-no-life-2015', 9, 5, 3, 1, 5, 'No Game, No Life (2015)', 0, '', '2022-09-26 20:49:34', '2019', NULL, 1, 2, NULL),
+(24, 'MA TRẬN: HỒI SINH', '155 phút', 'Ma Trận: Hồi Sinh, The Matrix Resurrections 2021 HD Vietsub + TM\r\nMa Trận: Hồi Sinh - The Matrix Resurrections 2021 Quay Trở Lại Một Thế Giới Của Hai Thực Tại: Một, Cuộc Sống Hàng Ngày; Khác, Những Gì Nằm Sau Nó. Để Tìm Hiểu Xem Thực Tế Của Anh Ta Có Phải Là Một Công Trình Hay Không, để Thực Sự Hiểu Rõ Bản Thân Mình, Anh Anderson Sẽ Phải Chọn Theo Dõi Con Thỏ Trắng Một Lần Nữa. Ma Trận: Hồi Sinh là phần phim tiếp theo rất được trông đợi của loạt phim “Ma Trận” đình đám, đã góp phần tái định nghĩa thể loại phim khoa học viễn tưởng. Phần phim mới nhất này đón chào sự trở lại của cặp đôi Keanu Reeves và Carrie-Anne Moss với vai diễn biểu tượng đã làm nên tên tuổi của họ, Neo và Trinity. Ngoài ra, phim còn có sự góp mặt của dàn diễn viên đầy tài năng gồm Yahya Abdul-', 1, 'truyen2781.jpeg', 'ma-tran-hoi-sinh', 6, 8, 9, 1, 0, 'The Matrix Resurrections (2021)', 0, '', '2022-09-26 20:49:19', '2017', 'ma tran hoi sinh,Ma tran Hoi sinh,hoi sinh Ma tran,ma sinh Hoi tran', 0, 1, 'd0OhjguDpHc');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `movie_genre`
+--
+
+DROP TABLE IF EXISTS `movie_genre`;
+CREATE TABLE IF NOT EXISTS `movie_genre` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `movie_id` int NOT NULL,
+  `genre_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `movie_id` (`movie_id`),
+  KEY `genre_id` (`genre_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `movie_genre`
+--
+
+INSERT INTO `movie_genre` (`id`, `movie_id`, `genre_id`) VALUES
+(1, 24, 3),
+(2, 24, 4),
+(3, 24, 8),
+(4, 23, 4),
+(5, 23, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
 --
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -249,17 +276,17 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -271,17 +298,17 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -289,29 +316,29 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'hoangphuong0813@gmail.com', NULL, '$2y$10$9ihI6aOBs9x97/4kNKm7sOqETdHoDNtxB8NL8u49RYGs3EqAmkQje', '16TaCwqDvEOKsia3U2m3yDv80IegKAnE7rSc7pbjqcdkLTH3vnVMUXNPWKYs', '2022-07-28 22:39:26', '2022-07-28 22:39:26');
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `episodes`
+-- Constraints for table `episodes`
 --
 ALTER TABLE `episodes`
-  ADD CONSTRAINT `episodes_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `episodes_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`);
 
 --
--- Các ràng buộc cho bảng `movies`
+-- Constraints for table `movies`
 --
 ALTER TABLE `movies`
-  ADD CONSTRAINT `movies_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `movies_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `movies_ibfk_3` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `movies_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `movies_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`),
+  ADD CONSTRAINT `movies_ibfk_3` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

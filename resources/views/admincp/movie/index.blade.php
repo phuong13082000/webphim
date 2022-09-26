@@ -81,7 +81,11 @@
                                 @endif
                             </td>
                             <td>{{$cate->category->title}}</td>
-                            <td>{{$cate->genre->title}}</td>
+                            <td>
+                            @foreach ($cate->movie_genre as $gen )
+                                <span class="badge bg-dark">{{$gen->title}}</span>                              
+                            @endforeach
+                            </td>  
                             <td>{{$cate->country->title}}</td>
                             <td>{{$cate->ngaytao}}</td>
                             <td>{{$cate->ngaycapnhat}}</td>

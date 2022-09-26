@@ -4,8 +4,19 @@
 ## Thông tin về Project
 
 Web Phim
-- User: Bootstrap 3
-- Admin: Bootstrap 5
+- User: Bootstrap 3.3.7, jquery 1.12.4, Owl Carousel v2.2.1
+- Admin: Bootstrap 5.0.2, jquery 3.6, font-awesome 4.2.0
 - Package laravelcollective/html
 
 ## Chức năng
+Admin
+- CRUD danh mục
+- CRUD phim
+- CRUD quốc gia
+- CRUD episode phim
+- Đăng nhập
+
+User
+- Xem trailer
+- Xem phim
+- Tìm kiếm phim
