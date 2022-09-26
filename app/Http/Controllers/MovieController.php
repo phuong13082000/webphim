@@ -63,13 +63,13 @@ class MovieController extends Controller
         $get_image = $request->file('image');
 
         if ($get_image) {
-
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name_image));
             $new_image = $name_image . rand(0, 9999) . '.' . $get_image->getClientOriginalExtension();
             $get_image->move('uploads/movie/', $new_image);
             $movie->image = $new_image;
         }
+
         $movie->save();
 
         $movie->movie_genre()->attach($data['genre']);
@@ -90,6 +90,7 @@ class MovieController extends Controller
         $list_genre = Genre::all();
         $movie = Movie::find($id);
         $movie_genre = $movie->movie_genre;
+
         return view('admincp.movie.form', compact('category', 'genre', 'country', 'movie', 'list_genre', 'movie_genre'));
     }
 
@@ -143,6 +144,7 @@ class MovieController extends Controller
             unlink('uploads/movie/' . $movie->image);
         }
         $movie->delete();
+
         return redirect()->route('movie.index');
     }
 
@@ -151,6 +153,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = Movie::find($data['id_phim']);
         $movie->year = $data['year'];
+
         $movie->save();
     }
 
@@ -159,6 +162,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = Movie::find($data['id_phim']);
         $movie->topview = $data['topview'];
+
         $movie->save();
     }
 
@@ -204,6 +208,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = Movie::find($data['id_phim']);
         $movie->season = $data['season'];
+        
         $movie->save();
     }
 }

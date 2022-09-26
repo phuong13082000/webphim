@@ -71,7 +71,6 @@
                                 @endif
                             </td>
                             <td>{{$cate->trailer}}</td>
-                            <!-- <td>{{$cate->description}}</td> -->
                             <td>{{$cate->slug}}</td>
                             <td>
                                 @if($cate->status)
@@ -82,9 +81,9 @@
                             </td>
                             <td>{{$cate->category->title}}</td>
                             <td>
-                            @foreach ($cate->movie_genre as $gen )
-                                <span class="badge bg-dark">{{$gen->title}}</span>                              
-                            @endforeach
+                                @foreach ($cate->movie_genre as $gen )
+                                    <span class="badge bg-dark">{{$gen->title}}</span>                              
+                                @endforeach
                             </td>  
                             <td>{{$cate->country->title}}</td>
                             <td>{{$cate->ngaytao}}</td>
@@ -93,30 +92,29 @@
                             <td>
                                 <form method="POST">
                                     @csrf
-                                    {!! Form::selectYear('year', 2000, 2022, isset($cate->year) ? $cate->year : '',['class'=>'select-year','id'=>$cate->id]) !!}
+                                    {!! Form::selectYear('year', 2000, 2022, isset($cate->year) ? $cate->year : '',['class'=>'select-year', 'id'=>$cate->id]) !!}
                                 </form>
                             </td>
 
                             <td>
                                 <form method="POST">
                                     @csrf
-                                    {!! Form::select('topview', ['0'=>'Ngày','1'=>'Tháng','2'=>'Năm'], isset($cate->topview) ? $cate->topview : '', ['class'=>'select-topview','id'=>$cate->id]) !!}
+                                    {!! Form::select('topview', ['0'=>'Ngày', '1'=>'Tháng', '2'=>'Năm'], isset($cate->topview) ? $cate->topview : '', ['class'=>'select-topview', 'id'=>$cate->id]) !!}
                                 </form>
                             </td>
 
                             <td>
                                 <form method="POST">
                                     @csrf
-                                    {!! Form::selectRange('season', 0, 20, isset($cate->season) ? $cate->season : '',['class'=>'select-season','id'=>$cate->id]) !!}
+                                    {!! Form::selectRange('season', 0, 20, isset($cate->season) ? $cate->season : '',['class'=>'select-season', 'id'=>$cate->id]) !!}
                                 </form>
-
                             </td>
 
                             <td>
-                                {!! Form::open(['method'=>'DELETE','route'=>['movie.destroy',$cate->id],'onsubmit'=>'return confirm("Bạn có chắc muốn xóa?")']) !!}
+                                {!! Form::open(['method'=>'DELETE', 'route'=>['movie.destroy', $cate->id],'onsubmit'=>'return confirm("Bạn có chắc muốn xóa?")']) !!}
                                 {!! Form::submit('Xóa', ['class'=>'btn btn-danger']) !!}
                                 {!! Form::close() !!}
-                                <a href="{{route('movie.edit',$cate->id)}}" class="btn btn-warning">Sửa</a>
+                                <a href="{{route('movie.edit', $cate->id)}}" class="btn btn-warning">Sửa</a>
                             </td>
                             
                         </tr>
